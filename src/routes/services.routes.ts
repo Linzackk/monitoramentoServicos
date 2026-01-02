@@ -1,7 +1,14 @@
 import { Router } from "express";
+import { validarAdicionarService } from "../middleware/services.middleware";
+import { validarResultado } from "../middleware/resultValidator";
 
 const router = Router();
 
-// Rota que cria serviços a serem analizados
+router.post(
+    "/",
+    validarAdicionarService,
+    validarResultado,
+    
+)
 
 export default router
