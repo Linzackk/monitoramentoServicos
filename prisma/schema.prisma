@@ -19,15 +19,15 @@ enum Environment {
   PROD
 }
 
-model services {
+model Service {
   id Int @id @default(autoincrement())
   name String
   url String
   environment Environment
   created_at DateTime @default(now())
 
-  status service_status?
-  incidents incidents[]
+  status ServiceHealth?
+  incidents Incident[]
 }
 
 enum CurrentStatus {
@@ -36,17 +36,13 @@ enum CurrentStatus {
   OFFLINE
 }
 
-model service_status {
+model ServiceHealth {
   service_id Int @id
   current_status CurrentStatus
   last_checked_at DateTime
   last_response_time_ms Int?
 
-  service services @relation(
-    fields: [service_id],
-    references: [id],
-    onDelete: Cascade
-  )
+  service Service @relation(fields: [service_id], references: [id], onDelete: Cascade)
 }
 
 enum IncidentStatus {
@@ -54,7 +50,7 @@ enum IncidentStatus {
   OFFLINE
 }
 
-model incidents {
+model Incident {
   id Int @id @default(autoincrement())
   service_id Int
   status IncidentStatus
@@ -63,9 +59,5 @@ model incidents {
   duration_seconds Int?
   reason String?
 
-  service services @relation(
-    fields: [service_id],
-    references: [id],
-    onDelete: Cascade
-  )
+  service Service @relation(fields: [service_id], references: [id], onDelete: Cascade)
 }
