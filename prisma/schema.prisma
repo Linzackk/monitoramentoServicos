@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "./prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Environment {
+  DEV
+  STATINGS
+  PROD
+}
+
+model services {
+  id Int @id @default(autoincrement())
+  name String
+  url String
+  environment Environment
+  created_at DateTime @default(now())
+
+  status service_status?
+  incidents incidents[]
+}
+
+enum CurrentStatus {
+  ONLINE
+  INSTAVEL
+  OFFLINE
+}
+
+model service_status {
+  service_id Int @id
+  current_status CurrentStatus
+  last_checked_at DateTime
+  last_response_time_ms Int?
+
+  service services @relation(
+    fields: [service_id],
+    references: [id],
+    onDelete: Cascade
+  )
+}
+
+enum IncidentStatus {
+  INSTAVEL
+  OFFLINE
+}
+
+model incidents {
+  id Int @id @default(autoincrement())
+  service_id Int
+  status IncidentStatus
+  started_at DateTime
+  ended_at DateTime?
+  duration_seconds Int?
+  reason String?
+
+  service services @relation(
+    fields: [service_id],
+    references: [id],
+    onDelete: Cascade
+  )
+}
