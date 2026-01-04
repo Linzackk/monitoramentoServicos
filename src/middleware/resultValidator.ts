@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction} from "express";
 import { FieldValidationError, validationResult } from "express-validator";
+import { statusCodes } from "../utils/statusCode";
 
 export function validarResultado(
     req: Request,
@@ -17,7 +18,7 @@ export function validarResultado(
             };
         });
 
-        return res.status(400).json({
+        return res.status(statusCodes.BAD_REQUEST).json({
         errors: errorsResponse,
         });
     }
