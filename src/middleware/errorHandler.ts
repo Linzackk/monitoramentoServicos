@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "../utils/appError";
+import { statusCodes } from "../utils/statusCode";
 
 export function errorHandler(
     err: Error,
@@ -8,7 +9,7 @@ export function errorHandler(
     next: NextFunction
 ) {
     const isAppError = err instanceof AppError;
-    const statusCode = isAppError ? err.statusCode: 500;
+    const statusCode = isAppError ? err.statusCode: statusCodes.SERVER_ERROR;
     const message = isAppError
         ? err.message
         : "Erro interno do servidor";
