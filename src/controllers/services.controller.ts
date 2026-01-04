@@ -1,6 +1,4 @@
 import { Request, Response } from "express";
-import { Service } from "../prisma/prisma/client";
-import { env } from "node:process";
 import { createService } from "../services/services.services";
 
 export async function cadastrarServico(
