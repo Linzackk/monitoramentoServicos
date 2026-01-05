@@ -5,6 +5,7 @@ import { statusCodes } from "../utils/statusCode";
 import { Environment } from "../prisma/prisma/enums";
 import { createServiceHealthDb } from "../database/servicesHealth/servicesHealth.create";
 import { deleteServiceDb } from "../database/services/services.delete";
+import { UpdateService } from "../utils/intefaces";
 
 export async function createService(
     name: string,
@@ -45,6 +46,16 @@ export async function searchServiceById(serviceId: number) {
         };
         throw new Error(error)
     }
+}
+
+export async function updateService(serviceId: number, data: UpdateService) {
+    if (!await searchServiceById(serviceId)) {
+        throw new AppError("Serviço nao encontrado", statusCodes.NOT_FOUND);
+    }
+    if (!data) {
+        throw new AppError("Nenhuma informacao fornecida para atualizar", statusCodes.BAD_REQUEST);
+    }
+    return
 }
 
 export async function deleteService(serviceId: number) {

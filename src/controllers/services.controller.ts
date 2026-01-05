@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { createService, deleteService, searchServiceById } from "../services/services.services";
+import { createService, deleteService, searchServiceById, updateService } from "../services/services.services";
 import { statusCodes } from "../utils/statusCode";
+import { UpdateService } from "../utils/intefaces";
 
 export async function cadastrarService(
     req: Request,
@@ -46,9 +47,12 @@ export async function atualizarService(
     res: Response
 ) {
     const id = Number(req.params.id);
+    const {name, url, environment} = req.body;
+    const data: UpdateService = {name, url, environment}
 
+    const response = await updateService(id, data)
     return res.status(statusCodes.OK).json({
-        message: "atualizando servico",
-        id
+        message: "TESTE",
+        response
     })
 }

@@ -26,7 +26,7 @@ router.delete(
     deletarService
 )
 
-router.put(
+router.patch(
     "/:id",
     validarFiltrarService,
     validarAtualizarService,
