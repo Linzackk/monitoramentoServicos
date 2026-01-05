@@ -3,6 +3,7 @@ import { AppError } from "../utils/appError";
 import { searchServiceByUrlDb } from "../database/services/services.read";
 import { statusCodes } from "../utils/statusCode";
 import { Environment } from "../prisma/prisma/enums";
+import { createServiceHealthDb } from "../database/servicesHealth/servicesHealth.create";
 
 export async function createService(
     name: string,
@@ -14,7 +15,7 @@ export async function createService(
     }
     try {
         const newService = await createServiceDb(name, url, environment);
-        // criar na tabela ServiceHealth com padrão funcionando
+        const newServiceHealth = await createServiceHealthDb(newService.id)
         return newService
     } catch (error: any) {
         throw new AppError("Erro interno do Servidor", statusCodes.SERVER_ERROR);
