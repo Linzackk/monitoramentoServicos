@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createService, searchServiceById } from "../services/services.services";
+import { createService, deleteService, searchServiceById } from "../services/services.services";
 import { statusCodes } from "../utils/statusCode";
 
 export async function cadastrarService(
@@ -23,7 +23,20 @@ export async function procurarService(
 
     const searchedService = await searchServiceById(id);
     return res.status(statusCodes.OK).json({
-        message: "Serviço encontrado com sucesso",
+        message: "Servico encontrado com sucesso",
         data: {service: searchedService}
+    });
+}
+
+export async function deletarService(
+    req: Request, 
+    res: Response
+) {
+    const id = Number(req.params.id);
+
+    const deletedService = await deleteService(id);
+    return res.status(statusCodes.OK).json({
+        message: "Servico deletado com sucesso",
+        data: {service: deletedService}
     });
 }

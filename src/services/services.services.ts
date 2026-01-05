@@ -4,6 +4,7 @@ import { searchServiceByIdDb, searchServiceByUrlDb } from "../database/services/
 import { statusCodes } from "../utils/statusCode";
 import { Environment } from "../prisma/prisma/enums";
 import { createServiceHealthDb } from "../database/servicesHealth/servicesHealth.create";
+import { deleteServiceDb } from "../database/services/services.delete";
 
 export async function createService(
     name: string,
@@ -18,22 +19,22 @@ export async function createService(
         const newServiceHealth = await createServiceHealthDb(newService.id)
         return newService
     } catch (error: any) {
-        throw new AppError("Erro interno do Servidor", statusCodes.SERVER_ERROR);
+        throw new Error(error)
     }
 }
 
-export async function searchServiceByUrl(url: string) {
+export async function searchServiceByUrl(serviceUrl: string) {
     try {
-        const searchedService = await searchServiceByUrlDb(url);
+        const searchedService = await searchServiceByUrlDb(serviceUrl);
         return searchedService;
     } catch (error: any) {
         return {};
     }
 }
 
-export async function searchServiceById(id: number) {
+export async function searchServiceById(serviceId: number) {
     try {
-        const searchedService = await searchServiceByIdDb(id);
+        const searchedService = await searchServiceByIdDb(serviceId);
         if (!searchedService) {
             throw new AppError("Servico nao encontrado", statusCodes.NOT_FOUND)
         }
@@ -42,6 +43,15 @@ export async function searchServiceById(id: number) {
         if (error instanceof AppError) {
             throw error;
         };
-        throw new AppError("Erro interno do servidor", statusCodes.SERVER_ERROR);
+        throw new Error(error)
+    }
+}
+
+export async function deleteService(serviceId: number) {
+    try {
+        const deletedService = deleteServiceDb(serviceId);
+        return deletedService;
+    } catch (error: any) {
+        throw error;
     }
 }

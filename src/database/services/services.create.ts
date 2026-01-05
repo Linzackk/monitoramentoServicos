@@ -15,8 +15,7 @@ export async function createServiceDb (
             }
         });
         return newService;
-    }
-    catch (error: any) {
+    } catch (error: any) {
         throw new Error(error)
     }
 }

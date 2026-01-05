@@ -23,7 +23,7 @@ export const validarAdicionarService = [
         .withMessage("Campo precisa ser 'DEV', 'STATINGS' ou 'PROD'"),
 ]
 
-export const validarProcurarService = [
+export const validarFiltrarService = [
     param("id")
         .notEmpty()
         .withMessage("Campo obrigatorio")
