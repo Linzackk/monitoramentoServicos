@@ -1,9 +1,10 @@
+import { Environment } from "../../utils/constants";
 import { prisma } from "../../utils/prisma";
 
 export async function createServiceDb (
     name: string,
     url: string,
-    environment: "DEV"  | "STATINGS" | "PROD",
+    environment: Environment,
 ) {
     try {
         const newService = await prisma.service.create({

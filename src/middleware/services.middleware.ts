@@ -1,4 +1,5 @@
 import { body } from "express-validator";
+import { ENVIRONMENTS } from "../utils/constants";
 
 export const validarAdicionarService = [
     body("name")
@@ -18,6 +19,6 @@ export const validarAdicionarService = [
         .withMessage("Campo obrigatorio")
         .isString()
         .withMessage("Campo precisa ser string")
-        .isIn(["DEV", "STATINGS", "PROD"])
+        .isIn(ENVIRONMENTS)
         .withMessage("Campo precisa ser 'DEV', 'STATINGS' ou 'PROD'"),
 ]
