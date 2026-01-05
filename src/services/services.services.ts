@@ -7,6 +7,7 @@ import { createServiceHealthDb } from "../database/servicesHealth/servicesHealth
 import { deleteServiceDb } from "../database/services/services.delete";
 import { UpdateService } from "../utils/intefaces";
 import { updateServiceDb } from "../database/services/services.update";
+import { deleteServiceHealthDb } from "../database/servicesHealth/servicesHealth.delete";
 
 export async function createService(
     name: string,
@@ -63,8 +64,9 @@ export async function updateService(serviceId: number, data: UpdateService) {
 
 export async function deleteService(serviceId: number) {
     try {
-        const deletedService = deleteServiceDb(serviceId);
-        return deletedService;
+        const deletedService = await deleteServiceDb(serviceId);
+        const deletedServiceHealth = await deleteServiceHealthDb(serviceId);
+        return {deletedService, deletedServiceHealth};
     } catch (error: any) {
         throw error;
     }

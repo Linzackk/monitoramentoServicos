@@ -9,10 +9,13 @@ export async function cadastrarService(
 ) {
     const {name, url, environment} = req.body;
 
-    const newService = await createService(name, url, environment);
+    const response = await createService(name, url, environment);
     return res.status(statusCodes.CREATED).json({
         message: "Novo serviço criado com sucesso",
-        data: {service: newService},
+        data: {
+            service: response.newService,
+            serviceHealth: response.newServiceHealth
+        },
     });
 }
 
@@ -22,10 +25,10 @@ export async function procurarService(
 ) {
     const id = Number(req.params.id);
 
-    const searchedService = await searchServiceById(id);
+    const response = await searchServiceById(id);
     return res.status(statusCodes.OK).json({
         message: "Servico encontrado com sucesso",
-        data: {service: searchedService}
+        data: {service: response}
     });
 }
 
@@ -35,10 +38,13 @@ export async function deletarService(
 ) {
     const id = Number(req.params.id);
 
-    const deletedService = await deleteService(id);
+    const response = await deleteService(id);
     return res.status(statusCodes.OK).json({
         message: "Servico deletado com sucesso",
-        data: {service: deletedService}
+        data: {
+            service: response.deletedService, serviceHealth: 
+            response.deletedServiceHealth
+        }
     });
 }
 
