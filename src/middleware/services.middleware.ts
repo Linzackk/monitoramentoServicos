@@ -1,4 +1,4 @@
-import { body, param } from "express-validator";
+import { body, param, } from "express-validator";
 import { Environment } from "../prisma/prisma/enums";
 
 export const validarAdicionarService = [
@@ -29,4 +29,4 @@ export const validarProcurarService = [
         .withMessage("Campo obrigatorio")
         .isInt({min: 1})
         .withMessage("Campo precisa ser int minimo 1")
-]
+]   

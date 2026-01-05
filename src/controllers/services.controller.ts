@@ -19,11 +19,11 @@ export async function procurarService(
     req: Request,
     res: Response,
 ) {
-    const id = Number(req.params);
+    const id = Number(req.params.id);
 
     const searchedService = await searchServiceById(id);
     return res.status(statusCodes.OK).json({
         message: "Serviço encontrado com sucesso",
-        data: {service: searchServiceById}
+        data: {service: searchedService}
     });
 }

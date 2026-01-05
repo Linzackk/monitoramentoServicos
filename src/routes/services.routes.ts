@@ -13,7 +13,7 @@ router.post(
 )
 
 router.get(
-    "/",
+    "/:id",
     validarProcurarService,
     validarResultado,
     procurarService
