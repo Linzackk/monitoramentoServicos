@@ -2,6 +2,7 @@ import { Router } from "express";
 import { validarAdicionarService, validarFiltrarService, validarAtualizarService } from "../middleware/services.middleware";
 import { validarResultado } from "../middleware/resultValidator";
 import { cadastrarService, procurarService, deletarService, atualizarService } from "../controllers/services.controller";
+import { requireAtLeastOneField } from "../middleware/requireAtLeastOneField";
 
 const router = Router();
 
@@ -31,6 +32,7 @@ router.patch(
     validarFiltrarService,
     validarAtualizarService,
     validarResultado,
+    requireAtLeastOneField,
     atualizarService,
 )
 

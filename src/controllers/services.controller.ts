@@ -49,6 +49,11 @@ export async function atualizarService(
     const id = Number(req.params.id);
     const {name, url, environment} = req.body;
     const data: UpdateService = {name, url, environment}
+    if (!data) {
+        return res.status(statusCodes.BAD_REQUEST).json({
+            message: "nenhuma informação fornecida"
+        })
+    }
 
     const response = await updateService(id, data)
     return res.status(statusCodes.OK).json({
