@@ -1,5 +1,5 @@
 import { body } from "express-validator";
-import { ENVIRONMENTS } from "../utils/constants";
+import { Environment } from "../prisma/prisma/enums";
 
 export const validarAdicionarService = [
     body("name")
@@ -19,6 +19,6 @@ export const validarAdicionarService = [
         .withMessage("Campo obrigatorio")
         .isString()
         .withMessage("Campo precisa ser string")
-        .isIn(ENVIRONMENTS)
+        .isIn(Object.values(Environment))
         .withMessage("Campo precisa ser 'DEV', 'STATINGS' ou 'PROD'"),
 ]

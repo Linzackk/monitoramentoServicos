@@ -2,7 +2,7 @@ import { createServiceDb } from "../database/services/services.create";
 import { AppError } from "../utils/appError";
 import { searchServiceByUrlDb } from "../database/services/services.read";
 import { statusCodes } from "../utils/statusCode";
-import { Environment } from "../utils/constants";
+import { Environment } from "../prisma/prisma/enums";
 
 export async function createService(
     name: string,

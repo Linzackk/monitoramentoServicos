@@ -1,4 +1,4 @@
-import { Environment } from "../../utils/constants";
+import { Environment } from "../../prisma/prisma/enums";
 import { prisma } from "../../utils/prisma";
 
 export async function createServiceDb (
