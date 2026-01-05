@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { validarAdicionarService, validarFiltrarService } from "../middleware/services.middleware";
+import { validarAdicionarService, validarFiltrarService, validarAtualizarService } from "../middleware/services.middleware";
 import { validarResultado } from "../middleware/resultValidator";
 import { cadastrarService, procurarService, deletarService } from "../controllers/services.controller";
 
@@ -24,6 +24,14 @@ router.delete(
     validarFiltrarService,
     validarResultado,
     deletarService
+)
+
+router.put(
+    ":/id",
+    validarFiltrarService,
+    validarAtualizarService,
+    validarResultado,
+    atualizarService,
 )
 
 export default router

@@ -19,7 +19,7 @@ export async function createService(
         const newServiceHealth = await createServiceHealthDb(newService.id)
         return newService
     } catch (error: any) {
-        throw new Error(error)
+        throw error
     }
 }
 

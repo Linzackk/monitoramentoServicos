@@ -29,4 +29,27 @@ export const validarFiltrarService = [
         .withMessage("Campo obrigatorio")
         .isInt({min: 1})
         .withMessage("Campo precisa ser int minimo 1")
-]   
+]
+
+export const validarAtualizarService = [
+    body("name")
+        .optional()
+        .notEmpty()
+        .withMessage("Campo precisa ter um valor")
+        .isString()
+        .withMessage("Campo precisa ser string"),
+    
+    body("url")
+        .optional()
+        .notEmpty()
+        .withMessage("Campo precisa ter um valor")
+        .isString()
+        .withMessage("Campo precisa ser string"),
+
+    body("environment")
+        .optional()
+        .notEmpty()
+        .withMessage("Campo precisa ter um valor")
+        .isString()
+        .withMessage("Campo precisa ser string"),
+]
