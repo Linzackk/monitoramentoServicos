@@ -1,9 +1,10 @@
+import { Environment } from "../../prisma/prisma/enums";
 import { prisma } from "../../utils/prisma";
 
 export async function createServiceDb (
     name: string,
     url: string,
-    environment: "DEV"  | "STATINGS" | "PROD",
+    environment: Environment,
 ) {
     try {
         const newService = await prisma.service.create({
@@ -14,8 +15,7 @@ export async function createServiceDb (
             }
         });
         return newService;
-    }
-    catch (error: any) {
+    } catch (error: any) {
         throw new Error(error)
     }
 }
