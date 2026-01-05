@@ -40,3 +40,15 @@ export async function deletarService(
         data: {service: deletedService}
     });
 }
+
+export async function atualizarService(
+    req: Request,
+    res: Response
+) {
+    const id = Number(req.params.id);
+
+    return res.status(statusCodes.OK).json({
+        message: "atualizando servico",
+        id
+    })
+}

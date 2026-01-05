@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { validarAdicionarService, validarFiltrarService, validarAtualizarService } from "../middleware/services.middleware";
 import { validarResultado } from "../middleware/resultValidator";
-import { cadastrarService, procurarService, deletarService } from "../controllers/services.controller";
+import { cadastrarService, procurarService, deletarService, atualizarService } from "../controllers/services.controller";
 
 const router = Router();
 
@@ -27,7 +27,7 @@ router.delete(
 )
 
 router.put(
-    ":/id",
+    "/:id",
     validarFiltrarService,
     validarAtualizarService,
     validarResultado,

@@ -51,5 +51,7 @@ export const validarAtualizarService = [
         .notEmpty()
         .withMessage("Campo precisa ter um valor")
         .isString()
-        .withMessage("Campo precisa ser string"),
+        .withMessage("Campo precisa ser string")
+        .isIn(Object.values(Environment))
+        .withMessage("Campo precisa ser 'DEV', 'STATINGS' ou 'PROD'"),
 ]
