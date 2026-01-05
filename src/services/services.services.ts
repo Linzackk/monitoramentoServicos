@@ -1,6 +1,6 @@
 import { createServiceDb } from "../database/services/services.create";
 import { AppError } from "../utils/appError";
-import { searchServiceByUrlDb } from "../database/services/services.read";
+import { searchServiceByIdDb, searchServiceByUrlDb } from "../database/services/services.read";
 import { statusCodes } from "../utils/statusCode";
 import { Environment } from "../prisma/prisma/enums";
 import { createServiceHealthDb } from "../database/servicesHealth/servicesHealth.create";
@@ -28,5 +28,14 @@ export async function searchServiceByUrl(url: string) {
         return searchedService;
     } catch (error: any) {
         return {};
+    }
+}
+
+export async function searchServiceById(id: number) {
+    try {
+        const searchedService = await searchServiceByIdDb(id);
+        return searchedService;
+    } catch (error: any) {
+        throw new AppError("Serviço inexistente", statusCodes.NOT_FOUND)
     }
 }

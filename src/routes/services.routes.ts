@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { validarAdicionarService } from "../middleware/services.middleware";
+import { validarAdicionarService, validarProcurarService } from "../middleware/services.middleware";
 import { validarResultado } from "../middleware/resultValidator";
-import { cadastrarServico } from "../controllers/services.controller";
+import { cadastrarService, procurarService } from "../controllers/services.controller";
 
 const router = Router();
 
@@ -9,7 +9,14 @@ router.post(
     "/",
     validarAdicionarService,
     validarResultado,
-    cadastrarServico
+    cadastrarService
+)
+
+router.get(
+    "/",
+    validarProcurarService,
+    validarResultado,
+    procurarService
 )
 
 export default router

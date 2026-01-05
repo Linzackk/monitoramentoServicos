@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { createService } from "../services/services.services";
+import { createService, searchServiceById } from "../services/services.services";
 import { statusCodes } from "../utils/statusCode";
 
-export async function cadastrarServico(
+export async function cadastrarService(
     req: Request,
     res: Response,
 ) {
@@ -12,5 +12,18 @@ export async function cadastrarServico(
     return res.status(statusCodes.CREATED).json({
         message: "Novo serviço criado com sucesso",
         data: {service: newService},
+    });
+}
+
+export async function procurarService(
+    req: Request,
+    res: Response,
+) {
+    const id = Number(req.params);
+
+    const searchedService = await searchServiceById(id);
+    return res.status(statusCodes.OK).json({
+        message: "Serviço encontrado com sucesso",
+        data: {service: searchServiceById}
     });
 }
