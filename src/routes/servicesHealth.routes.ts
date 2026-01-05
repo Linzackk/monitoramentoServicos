@@ -6,7 +6,7 @@ import { procurarServiceHealth } from "../controllers/servicesHealth.controller"
 const router = Router();
 
 router.get(
-    "/",
+    "/:id",
     validarFiltrarId,
     validarResultado,
     procurarServiceHealth
