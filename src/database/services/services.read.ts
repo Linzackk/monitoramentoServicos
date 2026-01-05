@@ -12,3 +12,16 @@ export async function searchServiceByUrlDb(url: string) {
         throw new Error(error);
     }
 }
+
+export async function searchServiceByIdDb(id: number) {
+    try {
+        const serviceSearched = await prisma.service.findUnique({
+            where: {
+                id: id,
+            }
+        });
+        return serviceSearched;
+    } catch (error: any) {
+        throw new Error(error);
+    }
+}
