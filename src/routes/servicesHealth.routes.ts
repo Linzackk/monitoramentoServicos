@@ -1,7 +1,15 @@
-import {Router} from "express";
+import { Router } from "express";
+import { validarFiltrarId } from "../middleware/filterId";
+import { validarResultado } from "../middleware/resultValidator";
+import { procurarServiceHealth } from "../controllers/servicesHealth.controller";
 
 const router = Router();
 
-// Só vai existir o get as outras rotas são dependentes do service.
+router.get(
+    "/",
+    validarFiltrarId,
+    validarResultado,
+    procurarServiceHealth
+)
 
 export default router;

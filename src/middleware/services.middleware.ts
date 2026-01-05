@@ -23,14 +23,6 @@ export const validarAdicionarService = [
         .withMessage("Campo precisa ser 'DEV', 'STATINGS' ou 'PROD'"),
 ]
 
-export const validarFiltrarService = [
-    param("id")
-        .notEmpty()
-        .withMessage("Campo obrigatorio")
-        .isInt({min: 1})
-        .withMessage("Campo precisa ser int minimo 1")
-]
-
 export const validarAtualizarService = [
     body("name")
         .optional()

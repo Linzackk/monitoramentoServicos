@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { validarAdicionarService, validarFiltrarService, validarAtualizarService } from "../middleware/services.middleware";
+import { validarAdicionarService, validarAtualizarService } from "../middleware/services.middleware";
+import { validarFiltrarId } from "../middleware/filterId";
 import { validarResultado } from "../middleware/resultValidator";
 import { cadastrarService, procurarService, deletarService, atualizarService } from "../controllers/services.controller";
 import { requireAtLeastOneField } from "../middleware/requireAtLeastOneField";
@@ -15,21 +16,21 @@ router.post(
 
 router.get(
     "/:id",
-    validarFiltrarService,
+    validarFiltrarId,
     validarResultado,
     procurarService
 )
 
 router.delete(
     "/:id",
-    validarFiltrarService,
+    validarFiltrarId,
     validarResultado,
     deletarService
 )
 
 router.patch(
     "/:id",
-    validarFiltrarService,
+    validarFiltrarId,
     validarAtualizarService,
     validarResultado,
     requireAtLeastOneField,
