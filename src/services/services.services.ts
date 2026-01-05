@@ -34,8 +34,14 @@ export async function searchServiceByUrl(url: string) {
 export async function searchServiceById(id: number) {
     try {
         const searchedService = await searchServiceByIdDb(id);
+        if (!searchedService) {
+            throw new AppError("Servico nao encontrado", statusCodes.NOT_FOUND)
+        }
         return searchedService;
     } catch (error: any) {
-        throw new AppError("Serviço inexistente", statusCodes.NOT_FOUND)
+        if (error instanceof AppError) {
+            throw error;
+        };
+        throw new AppError("Erro interno do servidor", statusCodes.SERVER_ERROR);
     }
 }

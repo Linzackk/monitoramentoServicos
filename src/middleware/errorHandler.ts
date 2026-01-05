@@ -13,7 +13,6 @@ export function errorHandler(
     const message = isAppError
         ? err.message
         : "Erro interno do servidor";
-
     console.error({
         name: err.name,
         message: err.message,
