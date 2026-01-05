@@ -6,6 +6,7 @@ import { Environment } from "../prisma/prisma/enums";
 import { createServiceHealthDb } from "../database/servicesHealth/servicesHealth.create";
 import { deleteServiceDb } from "../database/services/services.delete";
 import { UpdateService } from "../utils/intefaces";
+import { updateServiceDb } from "../database/services/services.update";
 
 export async function createService(
     name: string,
@@ -18,7 +19,7 @@ export async function createService(
     try {
         const newService = await createServiceDb(name, url, environment);
         const newServiceHealth = await createServiceHealthDb(newService.id)
-        return newService
+        return {newService, newServiceHealth}
     } catch (error: any) {
         throw error
     }
@@ -49,13 +50,15 @@ export async function searchServiceById(serviceId: number) {
 }
 
 export async function updateService(serviceId: number, data: UpdateService) {
-    if (!await searchServiceById(serviceId)) {
-        throw new AppError("Serviço nao encontrado", statusCodes.NOT_FOUND);
-    }
     if (!data) {
         throw new AppError("Nenhuma informacao fornecida para atualizar", statusCodes.BAD_REQUEST);
     }
-    return
+    if (!await searchServiceById(serviceId)) {
+        throw new AppError("Serviço nao encontrado", statusCodes.NOT_FOUND);
+    }
+
+    const updatedService = await updateServiceDb(serviceId, data);
+    return updatedService;
 }
 
 export async function deleteService(serviceId: number) {
