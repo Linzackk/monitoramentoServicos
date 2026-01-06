@@ -2,7 +2,7 @@ import axios from "axios";
 import { searchServiceHealthByIdDb } from "../database/servicesHealth/servicesHealth.read";
 import { CurrentStatus, Service } from "../prisma/prisma/client";
 import { AppError } from "../utils/appError";
-import { statusCodes } from "../utils/statusCode";
+import { ResponsTimeMs, statusCodes } from "../utils/utilNumbers";
 import { CheckService } from "../utils/interfaces";
 import { updateServiceHealthDb } from "../database/servicesHealth/servicesHealth.update";
 
@@ -25,6 +25,7 @@ export async function checkAllServices(services: Service[]) {
         console.log("Checking service:", service.name, service.url)
         await checkService(service);
     }
+    return;
 }
 
 async function checkService(service: Service) {
@@ -38,7 +39,7 @@ async function checkServiceResponseTime(service: Service) {
         const start = Date.now();
 
         await axios.get(service.url, {
-            timeout: 5000
+            timeout: ResponsTimeMs.OFFLINE
         });
 
         const duration = Date.now() - start;
@@ -49,7 +50,7 @@ async function checkServiceResponseTime(service: Service) {
         return response;    
     } catch (error) {
         const response: CheckService = {
-            responseTime: 5000,
+            responseTime: ResponsTimeMs.OFFLINE,
             checkedAt: new Date(),
         }
         return response;
@@ -62,15 +63,16 @@ export async function updateServiceHealth(
     lastChecked: Date
 ) {
     let serviceStatus: CurrentStatus = "ONLINE";
-    if (responseTime >= 5000) serviceStatus = "OFFLINE";
-    else if (responseTime >= 1000) serviceStatus = "INSTAVEL";
+    if (responseTime >= ResponsTimeMs.OFFLINE) serviceStatus = "OFFLINE";
+    else if (responseTime >= ResponsTimeMs.INSTAVEL) serviceStatus = "INSTAVEL";
 
     const serviceHealth = await searchServiceHealthByIdDb(service.id)
     const currentStatus = serviceHealth?.current_status;
 
-    if (serviceStatus !== currentStatus) {
-        await updateServiceHealthDb(service.id, serviceStatus, lastChecked, responseTime);
+    if (serviceStatus === currentStatus) {
         return;
     }
+    await updateServiceHealthDb(service.id, serviceStatus, lastChecked, responseTime);
+    // Criar um incidente se mudar para Offline ou Instavel
     return;
 }

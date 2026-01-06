@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { statusCodes } from "../utils/statusCode";
+import { statusCodes } from "../utils/utilNumbers";
 import { searchServiceHealthById } from "../services/servicesHealth.services";
 
 export async function procurarServiceHealth(

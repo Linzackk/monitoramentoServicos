@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { statusCodes } from "../utils/statusCode";
+import { statusCodes } from "../utils/utilNumbers";
 import { getIncidentsById } from "../services/incidents.services";
 
 export async function procurarIncidents(req: Request, res: Response) {

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "../utils/appError";
-import { statusCodes } from "../utils/statusCode";
+import { statusCodes } from "../utils/utilNumbers";
 
 export function requireAtLeastOneField(req: Request, res: Response, next: NextFunction) {
     const body = req.body;

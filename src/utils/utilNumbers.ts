@@ -8,3 +8,10 @@ export enum statusCodes {
     CONFLICT = 409,
     SERVER_ERROR = 500,
 }
+
+export enum ResponsTimeMs {
+    OFFLINE = 5000,
+    INSTAVEL = 1000,
+}
+
+export const checkTimeoutMs = 60_000

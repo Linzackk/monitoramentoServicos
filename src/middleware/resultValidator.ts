@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction} from "express";
 import { FieldValidationError, validationResult } from "express-validator";
-import { statusCodes } from "../utils/statusCode";
+import { statusCodes } from "../utils/utilNumbers";
 
 export function validarResultado(
     req: Request,
