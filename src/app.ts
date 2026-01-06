@@ -1,6 +1,7 @@
 import express from "express";
 import servicesRoutes from "./routes/services.routes";
 import servicesHealthRoutes from "./routes/servicesHealth.routes";
+import incidentsRoutes from "./routes/incidents.routes";
 import { notFound } from "./middleware/notFound";
 import { errorHandler } from "./middleware/errorHandler";
 
@@ -13,6 +14,8 @@ app.use(express.json());
 app.use("/services", servicesRoutes);
 
 app.use("/servicesHealth", servicesHealthRoutes);
+
+app.use("/incidents", incidentsRoutes)
 
 app.use(notFound);
  
