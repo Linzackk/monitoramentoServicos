@@ -62,19 +62,19 @@ npm install
 3. Configure o arquivo .env com as variáveis necessárias:
 
 ```bash
-   DATABASE_URL=postgresql://usuario:senha@localhost:5432/nome_do_banco
-   PORT=3000
+DATABASE_URL=postgresql://usuario:senha@localhost:5432/nome_do_banco
+PORT=3000
 ```
 
 
 4. Execute as migrations do Prisma:
 ```bash
-   npx prisma migrate dev
+npx prisma migrate dev
 ```
 
 5. Inicie a aplicação:
 ```bash
-   npm run dev
+npm run dev
 ```
 
 ---
