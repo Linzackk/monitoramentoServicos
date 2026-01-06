@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { createService, deleteService, searchServiceById, updateService } from "../services/services.services";
-import { statusCodes } from "../utils/statusCode";
-import { UpdateService } from "../utils/intefaces";
+import { statusCodes } from "../utils/utilNumbers";
+import { UpdateService } from "../utils/interfaces";
 
 export async function cadastrarService(
     req: Request,

@@ -1,11 +1,11 @@
 import { createServiceDb } from "../database/services/services.create";
 import { AppError } from "../utils/appError";
 import { searchServiceByIdDb, searchServiceByUrlDb } from "../database/services/services.read";
-import { statusCodes } from "../utils/statusCode";
+import { statusCodes } from "../utils/utilNumbers";
 import { Environment } from "../prisma/prisma/enums";
 import { createServiceHealthDb } from "../database/servicesHealth/servicesHealth.create";
 import { deleteServiceDb } from "../database/services/services.delete";
-import { UpdateService } from "../utils/intefaces";
+import { UpdateService } from "../utils/interfaces";
 import { updateServiceDb } from "../database/services/services.update";
 import { deleteServiceHealthDb } from "../database/servicesHealth/servicesHealth.delete";
 

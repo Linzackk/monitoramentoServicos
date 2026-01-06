@@ -1,4 +1,4 @@
-import { UpdateService } from "../../utils/intefaces";
+import { UpdateService } from "../../utils/interfaces";
 import { prisma } from "../../utils/prisma";
 
 export async function updateServiceDb(serviceId: number, data: UpdateService) {
