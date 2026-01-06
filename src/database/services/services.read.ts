@@ -25,3 +25,8 @@ export async function searchServiceByIdDb(id: number) {
         throw new Error(error);
     }
 }
+
+export async function searchAllServicesDb() {
+    const services = await prisma.service.findMany();
+    return services;
+}
