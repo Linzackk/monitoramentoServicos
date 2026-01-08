@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "testesDev": "ts-node-dev --respawn --transpile-only src/testes.ts"
   },
   "repository": {
     "type": "git",

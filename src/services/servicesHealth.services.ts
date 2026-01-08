@@ -74,5 +74,5 @@ export async function updateServiceHealth(
     }
     await updateServiceHealthDb(service.id, serviceStatusNow, lastChecked, responseTime);
     // Criar um incidente se mudar para Offline ou Instavel
-    return;
+    return ;
 }

@@ -1,4 +1,3 @@
-
 import { prisma } from "../../utils/prisma";
 
 export async function updateIncidentDb(incidentId: number, endedAt?: Date, durationSeconds?: number, reason?: string) {
