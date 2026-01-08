@@ -1,4 +1,4 @@
-import { CurrentStatus, Environment } from "../prisma/prisma/enums";
+import { Environment } from "@prisma/client";
 
 export interface UpdateService {
     name?: string,
