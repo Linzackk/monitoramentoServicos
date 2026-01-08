@@ -16,6 +16,10 @@ const router = Router();
  *     description: Cria um serviço com nome, URL e ambiente. Necessita token válido.
  *     tags:
  *       - Services
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
  *     requestBody:
  *       required: true
  *       content:
@@ -63,6 +67,9 @@ router.post(
  *     tags:
  *       - Services
  *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
  *       - in: path
  *         name: id
  *         required: true
@@ -108,6 +115,9 @@ router.get(
  *     tags:
  *       - Services
  *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
  *       - in: path
  *         name: id
  *         required: true
