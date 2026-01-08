@@ -62,17 +62,17 @@ export async function updateServiceHealth(
     responseTime: number, 
     lastChecked: Date
 ) {
-    let serviceStatus: CurrentStatus = "ONLINE";
-    if (responseTime >= ResponsTimeMs.OFFLINE) serviceStatus = "OFFLINE";
-    else if (responseTime >= ResponsTimeMs.INSTAVEL) serviceStatus = "INSTAVEL";
+    let serviceStatusNow: CurrentStatus = "ONLINE";
+    if (responseTime >= ResponsTimeMs.OFFLINE) serviceStatusNow = "OFFLINE";
+    else if (responseTime >= ResponsTimeMs.INSTAVEL) serviceStatusNow = "INSTAVEL";
 
-    const serviceHealth = await searchServiceHealthByIdDb(service.id)
-    const currentStatus = serviceHealth?.current_status;
+    const lastCheckedserviceHealth = await searchServiceHealthByIdDb(service.id)
+    const lastStatus = lastCheckedserviceHealth?.current_status;
 
-    if (serviceStatus === currentStatus) {
+    if (serviceStatusNow === lastStatus) {
         return;
     }
-    await updateServiceHealthDb(service.id, serviceStatus, lastChecked, responseTime);
+    await updateServiceHealthDb(service.id, serviceStatusNow, lastChecked, responseTime);
     // Criar um incidente se mudar para Offline ou Instavel
     return;
 }
