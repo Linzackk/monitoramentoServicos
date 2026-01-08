@@ -1,4 +1,4 @@
-import { CurrentStatus } from "../../prisma/prisma/enums";
+import { CurrentStatus } from "@prisma/client";
 import { prisma } from "../../utils/prisma";
 
 export async function updateServiceHealthDb(

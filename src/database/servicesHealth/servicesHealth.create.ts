@@ -1,5 +1,5 @@
 import { prisma } from "../../utils/prisma";
-import { CurrentStatus } from "../../prisma/prisma/enums";
+import { CurrentStatus } from "@prisma/client";
 
 export async function createServiceHealthDb(
     serviceId: number

@@ -1,4 +1,6 @@
+import "dotenv/config"
+
 export const redisConfig = {
-  host: "127.0.0.1",
-  port: 6379
+  host: process.env.REDIS_CONFIG,
+  port: Number(process.env.REDIS_PORT)
 };
