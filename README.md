@@ -18,6 +18,9 @@ Este projeto é uma API desenvolvida para monitorar o status de serviços e apli
 - **Axios** – Realização de requisições HTTP
 - **BullMQ** – Gerenciamento de filas para tarefas assíncronas
 - **ioredis** – Cliente Redis para gerenciamento de filas
+- **Swagger** - Documentação da API
+- **bcrypt** - Encriptação de Senhas e dados sensíveis
+- **JWT** - Autorização de Contas para rotas
 
 ---
 
