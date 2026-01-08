@@ -1,4 +1,4 @@
-import { IncidentStatus } from "../../prisma/prisma/enums";
+import { IncidentStatus } from "@prisma/client";
 import { prisma } from "../../utils/prisma";
 
 export async function createIncidentDb(serviceId: number, status: IncidentStatus, startedAt: Date, reason?: string) {

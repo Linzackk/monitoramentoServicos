@@ -5,8 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "./prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -60,4 +59,10 @@ model Incident {
   reason String?
 
   service Service @relation(fields: [service_id], references: [id], onDelete: Cascade)
+}
+
+model Account {
+  id Int @id @default(autoincrement())
+  user String
+  password String 
 }

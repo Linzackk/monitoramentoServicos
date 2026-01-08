@@ -2,6 +2,7 @@ import express from "express";
 import servicesRoutes from "./routes/services.routes";
 import servicesHealthRoutes from "./routes/servicesHealth.routes";
 import incidentsRoutes from "./routes/incidents.routes";
+import accountRoutes from "./routes/account.routes"
 import { notFound } from "./middleware/notFound";
 import { errorHandler } from "./middleware/errorHandler";
 
@@ -15,7 +16,9 @@ app.use("/services", servicesRoutes);
 
 app.use("/servicesHealth", servicesHealthRoutes);
 
-app.use("/incidents", incidentsRoutes)
+app.use("/incidents", incidentsRoutes);
+
+app.use("/accounts", accountRoutes);
 
 app.use(notFound);
  

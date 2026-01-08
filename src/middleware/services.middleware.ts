@@ -1,5 +1,5 @@
 import { body, param, } from "express-validator";
-import { Environment } from "../prisma/prisma/enums";
+import { Environment } from "@prisma/client";
 
 export const validarAdicionarService = [
     body("name")
