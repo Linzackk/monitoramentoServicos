@@ -11,7 +11,7 @@ const router = Router();
  * /incidents/{id}:
  *   get:
  *     summary: Lista incidents de um serviço
- *     description: Retorna os incidents de um serviço específico. É possível limitar a quantidade com o parâmetro `quantity` (1 a 10).
+ *     description: "Retorna os incidents de um serviço específico. É possível limitar a quantidade com o parâmetro 'quantity' de 1 a 10."
  *     tags:
  *       - Incidents
  *     parameters:
@@ -20,7 +20,7 @@ const router = Router();
  *         required: true
  *         schema:
  *           type: string
- *         description: ID do serviço
+ *         description: "ID do serviço"
  *       - in: query
  *         name: quantity
  *         required: true
@@ -28,10 +28,10 @@ const router = Router();
  *           type: integer
  *           minimum: 1
  *           maximum: 10
- *         description: Quantidade de incidents a retornar (mín: 1, máx: 10)
+ *         description: "Quantidade de incidents a retornar (mín: 1, máx: 10)"
  *     responses:
  *       200:
- *         description: Lista de incidents retornada com sucesso
+ *         description: "Lista de incidents retornada com sucesso"
  *         content:
  *           application/json:
  *             schema:
@@ -52,16 +52,14 @@ const router = Router();
  *                     type: string
  *                     format: date-time
  *                     example: "2026-01-08T19:00:00Z"
- *                   createdAt:
- *                     type: string
- *                     format: date-time
- *                     example: "2026-01-08T19:00:00Z"
+ *                   responseTimeMs:
+ *                     type: number
+ *                     example: 120
  *       400:
- *         description: Parâmetros inválidos (ex.: quantity fora do intervalo)
+ *         description: "Parâmetros inválidos (ex.: quantity fora do intervalo)"
  *       404:
- *         description: Serviço ou incidents não encontrados
+ *         description: "Serviço ou incidents não encontrados"
  */
-
 router.get(
     "/:id",
     validarFiltrarId,
