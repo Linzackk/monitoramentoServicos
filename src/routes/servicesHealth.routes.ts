@@ -7,7 +7,7 @@ const router = Router();
 
 /**
  * @openapi
- * /services/{id}/health:
+ * /servicesHealth/{id}/:
  *   get:
  *     summary: Verifica o status de saúde de um serviço
  *     description: Retorna o status atual do serviço (ONLINE, INSTÁVEL ou OFFLINE), a última vez que foi checado e o tempo em milissegundos do último check.
