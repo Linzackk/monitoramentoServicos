@@ -93,18 +93,33 @@ Configure a Porta e o Host no .env
 
 ---
 
-### Rotas Principais:
-#### Serviços
-  - GET /services – Listar todos os serviços
-  - POST /services – Criar um novo serviço
-  - PUT /services/:id – Atualizar um serviço
-  - DELETE /services/:id – Remover um serviço
+### Endpoints
+#### Services
+
+- GET /services/:id – Mostra o serviço com o ID indicado
+- POST /services – Criar um novo serviço
+- PATCH /services/:id – Atualizar um serviço (pelo menos um campo deve estar presente)
+- DELETE /services/:id – Remover um serviço
+
+#### Services Health
+
+- GET /servicesHealth/:id – Verifica o status de saúde de um serviço
+
+#### Accounts
+
+- GET /accounts – Login de usuário
+- POST /accounts – Criar uma nova conta
 
 #### Incidentes
-  - GET /incidents – Listar incidentes
-  - GET /incidents/:serviceId – Listar incidentes de um serviço específico
 
----
+- GET /incidents/:id – Listar incidents de um serviço específico (parâmetro quantity opcional de 1 a 10)
+
+#### Documentação 
+
+- A documentação completa com exemplos de request e response está disponível no Swagger quando o projeto está rodando:
+```bash
+  http://localhost:3000/docs
+```
 
 ### Observações:
 - O monitoramento dos serviços é feito de forma assíncrona usando filas com BullMQ e Redis.
