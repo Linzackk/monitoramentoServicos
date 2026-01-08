@@ -64,6 +64,8 @@ npm install
 ```bash
 DATABASE_URL=postgresql://usuario:senha@localhost:5432/nome_do_banco
 PORT=3000
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
 ```
 
 
