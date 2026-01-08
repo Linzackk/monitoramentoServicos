@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createUser } from "../services/accounts.services";
+import { createUser, findUser, loginAccount } from "../services/accounts.services";
 import { statusCodes } from "../utils/utilNumbers";
 
 export async function criarAccount(
@@ -21,13 +21,18 @@ export async function logarAccount(
 ) {
     const {user, password} = req.body;
 
-    
+    const tokenJWT = await loginAccount(user, password);
+    res.status(statusCodes.OK).json({
+        token: tokenJWT
+    })
 }
 
 export async function testeJWT(
     req: Request,
     res: Response
 ) {
-    console.log(req.header)
-    res.status(201).json({})
+    const {authorization} = req.headers
+    res.status(201).json({
+        authorization
+    })
 }
