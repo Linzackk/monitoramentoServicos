@@ -1,3 +1,4 @@
+import { checkServicesMs } from "../utils/utilNumbers";
 import { serviceHealthQueue } from "./serviceHealth.queue";
 
 export async function startServiceHealthScheduler() {
@@ -7,7 +8,7 @@ export async function startServiceHealthScheduler() {
         {},
         {
             jobId: "service-health-scheduler",
-            repeat: { every: 60_000 }
+            repeat: { every: checkServicesMs }
         }
     );
 }
