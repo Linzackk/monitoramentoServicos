@@ -1,7 +1,7 @@
 import { createIncidentDb } from "../database/incidents/incidents.create";
 import { getIncidentsByServiceIdDb } from "../database/incidents/incidents.read";
 import { updateIncidentDb } from "../database/incidents/incidents.update";
-import { CurrentStatus, IncidentStatus } from "../prisma/prisma/enums";
+import { CurrentStatus, IncidentStatus } from "@prisma/client";
 import { dateToSeconds } from "../utils/dateSeconds";
 
 export async function getIncidentsById(serviceId: number, quantity: number = 1) {

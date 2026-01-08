@@ -1,6 +1,6 @@
 import axios from "axios";
 import { searchServiceHealthByIdDb } from "../database/servicesHealth/servicesHealth.read";
-import { CurrentStatus, Service } from "../prisma/prisma/client";
+import { CurrentStatus, Service } from "@prisma/client";
 import { AppError } from "../utils/appError";
 import { ResponsTimeMs, statusCodes } from "../utils/utilNumbers";
 import { CheckService } from "../utils/interfaces";
