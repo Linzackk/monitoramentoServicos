@@ -58,7 +58,7 @@ export async function updateIncident(
         const quantityCheck = 1;
         const incidents = await getIncidentsByServiceIdDb(serviceId, quantityCheck);
         const lastIncident = incidents[0]
-        const durationSeconds = dateToSeconds(lastIncident.started_at) - dateToSeconds(endedAt);
+        const durationSeconds = dateToSeconds(endedAt) - dateToSeconds(lastIncident.started_at);
 
         const uptatedIncident = await updateIncidentDb(lastIncident.id, endedAt, durationSeconds, reason);
         return uptatedIncident;

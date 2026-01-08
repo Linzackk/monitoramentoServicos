@@ -5,6 +5,7 @@ import { AppError } from "../utils/appError";
 import { ResponsTimeMs, statusCodes } from "../utils/utilNumbers";
 import { CheckService } from "../utils/interfaces";
 import { updateServiceHealthDb } from "../database/servicesHealth/servicesHealth.update";
+import { manageIncidents } from "./incidents.services";
 
 export async function searchServiceHealthById(serviceHealthId: number) {
     try {
@@ -72,7 +73,9 @@ export async function updateServiceHealth(
     if (serviceStatusNow === lastStatus) {
         return;
     }
-    await updateServiceHealthDb(service.id, serviceStatusNow, lastChecked, responseTime);
-    // Criar um incidente se mudar para Offline ou Instavel
+    const reason = "";
+
+    const uptatedServiceHealth = await updateServiceHealthDb(service.id, serviceStatusNow, lastChecked, responseTime);
+    const incident = await manageIncidents(service.id, serviceStatusNow, lastChecked, lastChecked, reason);
     return ;
 }
