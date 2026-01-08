@@ -79,6 +79,14 @@ npx prisma migrate dev
 npm run dev
 ```
 
+### Dependências necessárias
+
+Este projeto utiliza **BullMQ** para a verificação do Status dos Serviços cadastrados. Para que ele funcione corretamente, é necessário que um servidor **Redis** esteja instalado e em execução.
+
+Certifique-se de que o Redis esteja acessível na máquina/ambiente onde a aplicação será executada.
+
+Configure a Porta e o Host no .env
+
 ---
 
 ### Rotas Principais:
