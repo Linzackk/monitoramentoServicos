@@ -1,6 +1,6 @@
 import { body } from "express-validator";
 
-export const validarCriarAccount = [
+export const validarAccount = [
     body("user")
         .notEmpty()
         .withMessage("Campo obrigatorio")

@@ -1,20 +1,30 @@
 import { Router } from "express";
-import { validarCriarAccount } from "../middleware/account.middleware";
+import { validarAccount } from "../middleware/account.middleware";
 import { validarResultado } from "../middleware/resultValidator";
-import { criarAccount } from "../controllers/accounts.controller";
+import { criarAccount, logarAccount } from "../controllers/accounts.controller";
+import { validarAutorizacaoToken } from "../middleware/auth.middleware";
 
 const router = Router();
 
-// router.get(
-//     "/"
-//     // Login
-// )
+router.get(
+    "/",
+    validarAccount,
+    validarResultado,
+    logarAccount
+)
 
 router.post(
     "/", // criando novo usuario
-    validarCriarAccount,
+    validarAccount,
     validarResultado,
     criarAccount
+)
+
+router.get(
+    "/teste",
+    validarAutorizacaoToken,
+    validarResultado,
+    
 )
 
 export default router;

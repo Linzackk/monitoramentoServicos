@@ -1,10 +1,9 @@
 import { prisma } from "../../utils/prisma";
 
-export async function searchUserDb(user: string, password: string) {
+export async function searchUserDb(user: string) {
     try {
         const searchedUser = await prisma.account.findFirst({
             where: {
-                password: password,
                 user: user,
             }
         });

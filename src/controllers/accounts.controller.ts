@@ -14,3 +14,20 @@ export async function criarAccount(
         data: {user: user}
     });
 }
+
+export async function logarAccount(
+    req: Request,
+    res: Response
+) {
+    const {user, password} = req.body;
+
+    
+}
+
+export async function testeJWT(
+    req: Request,
+    res: Response
+) {
+    console.log(req.header)
+    res.status(201).json({})
+}
