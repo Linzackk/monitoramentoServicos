@@ -80,7 +80,7 @@ npx prisma migrate dev
 
 5. Inicie a aplicação:
 ```bash
-npm run dev
+npm run start
 ```
 
 ### Dependências necessárias
