@@ -14,7 +14,6 @@ const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_1 = require("./swagger");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-// Instalar configurações depois
 app.use("/services", services_routes_1.default);
 app.use("/servicesHealth", servicesHealth_routes_1.default);
 app.use("/incidents", incidents_routes_1.default);
