@@ -9,6 +9,9 @@
     "start": "node dist/server.js",
     "testesDev": "ts-node-dev --respawn --transpile-only src/testes.ts"
   },
+  "prisma": {
+    "seed": "ts-node src/prisma/seed.ts"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Linzackk/monitoramentoServicos.git"

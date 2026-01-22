@@ -12,8 +12,6 @@ const app = express();
 
 app.use(express.json());
 
-// Instalar configurações depois
-
 app.use("/services", servicesRoutes);
 
 app.use("/servicesHealth", servicesHealthRoutes);
