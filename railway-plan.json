@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "install": "npm ci",
+    "build": "",
+    "start": "npm run start"
+  }
+}
