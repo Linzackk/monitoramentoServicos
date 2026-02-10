@@ -14,4 +14,4 @@ export enum ResponsTimeMs {
     INSTAVEL = 1000,
 }
 
-export const checkServicesMs = 60_000
+export const checkServicesMs = 900_000
