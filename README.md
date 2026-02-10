@@ -6,6 +6,12 @@ Este projeto é uma API desenvolvida para monitorar o status de serviços e apli
 
 ---
 
+## Acesso da API
+
+Link para documentação:
+
+https://monitoramentoservicos.onrender.com/docs/
+
 ### Tecnologias Utilizadas
 
 - **Node.js** – Runtime JavaScript
