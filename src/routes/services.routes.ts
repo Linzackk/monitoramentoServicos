@@ -18,7 +18,7 @@ const router = Router();
  *       - Services
  *     parameters:
  *       - in: header
- *         name: Authorization
+ *         name: authorization
  *         required: true
  *     requestBody:
  *       required: true
@@ -67,9 +67,6 @@ router.post(
  *     tags:
  *       - Services
  *     parameters:
- *       - in: header
- *         name: Authorization
- *         required: true
  *       - in: path
  *         name: id
  *         required: true
@@ -116,7 +113,7 @@ router.get(
  *       - Services
  *     parameters:
  *       - in: header
- *         name: Authorization
+ *         name: authorization
  *         required: true
  *       - in: path
  *         name: id
