@@ -8,7 +8,7 @@ const router = (0, express_1.Router)();
 /**
  * @openapi
  * /accounts:
- *   get:
+ *   post:
  *     summary: Faz login de um usuário
  *     description: Valida o usuário e senha fornecidos e retorna informações da conta ou token de autenticação.
  *     tags:
@@ -45,7 +45,7 @@ const router = (0, express_1.Router)();
  *       401:
  *         description: Usuário ou senha incorretos
  */
-router.get("/", account_middleware_1.validarAccount, resultValidator_1.validarResultado, accounts_controller_1.logarAccount);
+router.post("/", account_middleware_1.validarAccount, resultValidator_1.validarResultado, accounts_controller_1.logarAccount);
 /**
  * @openapi
  * /accounts:

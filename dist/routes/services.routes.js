@@ -19,7 +19,7 @@ const router = (0, express_1.Router)();
  *       - Services
  *     parameters:
  *       - in: header
- *         name: Authorization
+ *         name: authorization
  *         required: true
  *     requestBody:
  *       required: true
@@ -60,9 +60,6 @@ router.post("/", services_middleware_1.validarAdicionarService, auth_middleware_
  *     tags:
  *       - Services
  *     parameters:
- *       - in: header
- *         name: Authorization
- *         required: true
  *       - in: path
  *         name: id
  *         required: true
@@ -103,7 +100,7 @@ router.get("/:id", filterId_1.validarFiltrarId, resultValidator_1.validarResulta
  *       - Services
  *     parameters:
  *       - in: header
- *         name: Authorization
+ *         name: authorization
  *         required: true
  *       - in: path
  *         name: id
