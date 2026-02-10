@@ -8,7 +8,7 @@ const router = Router();
 /**
  * @openapi
  * /accounts:
- *   get:
+ *   post:
  *     summary: Faz login de um usuário
  *     description: Valida o usuário e senha fornecidos e retorna informações da conta ou token de autenticação.
  *     tags:
@@ -45,7 +45,7 @@ const router = Router();
  *       401:
  *         description: Usuário ou senha incorretos
  */
-router.get(
+router.post(
     "/",
     validarAccount,
     validarResultado,
